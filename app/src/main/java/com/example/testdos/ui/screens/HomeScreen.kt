@@ -6,13 +6,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.testdos.ui.components.CustomTopBar
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(onNavigate: () -> Unit) {
     Scaffold(
+        // modifier = Modifier.background(MaterialTheme.colorScheme.primary),
         topBar = {
-            TopAppBar(title = { Text("Pantalla Home") })
+            CustomTopBar(title = "Inicio")
         }
     ) { innerPadding ->
         Column(
