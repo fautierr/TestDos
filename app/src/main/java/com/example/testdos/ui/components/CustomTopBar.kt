@@ -45,10 +45,10 @@ fun CustomTopBar(
                 Spacer(modifier = Modifier.width(48.dp))
             }
         },
-        colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
+        /*colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
             containerColor = MaterialTheme.colorScheme.primary,
             titleContentColor = MaterialTheme.colorScheme.onPrimary,
             navigationIconContentColor = MaterialTheme.colorScheme.onPrimary
-        )
+        )*/
     )
 }

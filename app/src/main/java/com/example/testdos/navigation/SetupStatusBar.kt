@@ -1,20 +1,35 @@
-import com.google.accompanist.systemuicontroller.rememberSystemUiController
-import androidx.compose.runtime.SideEffect
-import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.layout.windowInsetsTopHeight
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.statusBars
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 
 @Composable
-fun SetupStatusBar() {
-    val systemUiController = rememberSystemUiController()
-    val darkTheme = isSystemInDarkTheme()
-
-    val color = MaterialTheme.colorScheme.primary // ✅ dentro de un Composable
-
-    SideEffect {
-        systemUiController.setStatusBarColor(
-            color = color,
-            darkIcons = false
+fun SetupStatusBar(
+    statusBarColor: Color = MaterialTheme.colorScheme.primary
+) {
+    Box(modifier = Modifier.fillMaxSize()) {
+        // Dibuja el fondo en el área del status bar
+        Box(
+            modifier = Modifier
+                .windowInsetsTopHeight(WindowInsets.statusBars)
+                .background(statusBarColor)
         )
+
+        // El resto del contenido
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .statusBarsPadding()
+            /*    .background(Color.Blue)*/
+        ) {
+            // Tu UI acá
+        }
     }
 }

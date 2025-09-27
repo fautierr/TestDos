@@ -25,7 +25,7 @@ fun AppNavHost() {
     val shouldShowBottomBar = shouldShowBottomBar(navController)
 
     Scaffold(
-        containerColor = MaterialTheme.colorScheme.primary,
+        containerColor = MaterialTheme.colorScheme.background,
         bottomBar = {
             if (shouldShowBottomBar) {
             BottomNavigationBar(navController = navController)
