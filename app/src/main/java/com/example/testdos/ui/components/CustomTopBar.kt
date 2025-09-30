@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.width
 
 
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CustomTopBar(
@@ -27,6 +28,7 @@ fun CustomTopBar(
                 // modifier = Modifier.padding(bottom = 10.dp) // espacio sutil abajo
             )
         },
+
         navigationIcon = {
             if (showBackButton && onBack != null) {
                 IconButton(
@@ -45,10 +47,10 @@ fun CustomTopBar(
                 Spacer(modifier = Modifier.width(48.dp))
             }
         },
-        /*colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
-            containerColor = MaterialTheme.colorScheme.primary,
-            titleContentColor = MaterialTheme.colorScheme.onPrimary,
-            navigationIconContentColor = MaterialTheme.colorScheme.onPrimary
-        )*/
+        colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
+            containerColor = MaterialTheme.colorScheme.background,
+            // titleContentColor = MaterialTheme.colorScheme.onPrimary,
+            // navigationIconContentColor = MaterialTheme.colorScheme.onPrimary
+        )
     )
 }

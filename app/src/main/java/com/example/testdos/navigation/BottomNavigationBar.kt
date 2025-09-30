@@ -4,8 +4,10 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.List
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Person
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -19,7 +21,9 @@ fun BottomNavigationBar(navController: NavHostController) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
 
-    NavigationBar {
+    NavigationBar(
+        containerColor = MaterialTheme.colorScheme.background // <-- acá le decís que use el surface
+    ) {
         items.forEach { graph ->
             val (icon, label) = when (graph) {
                 HomeGraph -> Icons.Default.Home to "Inicio"
@@ -41,13 +45,20 @@ fun BottomNavigationBar(navController: NavHostController) {
                         restoreState = true
                     }
                     /*navController.navigate(graph) {
-                        popUpTo(navController.graph.startDestinationId) {
-                            inclusive = false
-                        }
-                        launchSingleTop = true
-                        restoreState = false // 👈 con este fragmento se puede volver siempre a la vista principal
-                    }*/
-                }
+                       popUpTo(navController.graph.startDestinationId) {
+                           inclusive = false
+                       }
+                       launchSingleTop = true
+                       restoreState = false // 👈 con este fragmento se puede volver siempre a la vista principal
+                   }*/
+                },
+                colors = NavigationBarItemDefaults.colors(
+                    // selectedIconColor = MaterialTheme.colorScheme.onSurface,
+                    // unselectedIconColor = MaterialTheme.colorScheme.onSurface,
+                    // selectedTextColor = MaterialTheme.colorScheme.onSurface,
+                    // unselectedTextColor = MaterialTheme.colorScheme.onSurface,
+                    indicatorColor = MaterialTheme.colorScheme.surface
+                )
             )
         }
     }

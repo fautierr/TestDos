@@ -7,6 +7,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.testdos.ui.components.CustomTopBar
+import com.example.testdos.ui.theme.extendedColors
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -26,7 +27,40 @@ fun HomeScreen(onNavigate: () -> Unit) {
 
             Spacer(modifier = Modifier.height(20.dp))
 
-            Button(onClick = onNavigate) {
+            Button(
+                onClick = onNavigate,
+               /* colors = ButtonDefaults.buttonColors(
+                    containerColor = MaterialTheme.colorScheme.tertiary,
+                    contentColor = MaterialTheme.colorScheme.onTertiary
+                )*/
+            ) {
+                Text("Ir al detalle")
+            }
+            Button(
+                onClick = onNavigate,
+                 colors = ButtonDefaults.buttonColors(
+                     containerColor = MaterialTheme.extendedColors.success,
+                     // contentColor = MaterialTheme.colorScheme.onTertiary
+                 )
+            ) {
+                Text("Ir al detalle")
+            }
+            Button(
+                onClick = onNavigate,
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = MaterialTheme.extendedColors.warning,
+                    // contentColor = MaterialTheme.colorScheme.onTertiary
+                )
+            ) {
+                Text("Ir al detalle")
+            }
+            Button(
+                onClick = onNavigate,
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = MaterialTheme.colorScheme.error,
+                    // contentColor = MaterialTheme.colorScheme.onTertiary
+                )
+            ) {
                 Text("Ir al detalle")
             }
         }
