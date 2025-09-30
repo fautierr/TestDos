@@ -1,6 +1,10 @@
 package com.example.testdos.navigation
 
 import SetupStatusBar
+import androidx.compose.animation.AnimatedContentTransitionScope
+import androidx.compose.animation.EnterTransition
+import androidx.compose.animation.ExitTransition
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
@@ -41,26 +45,60 @@ fun AppNavHost() {
         ) {
             // Grafo Home
             navigation<HomeGraph>(startDestination = Home) {
-                composable<Home> {
+                composable<Home>(
+                    enterTransition = { EnterTransition.None }, // Home no necesita animación cuando se muestra como raíz
+                    exitTransition = { ExitTransition.None },  // ni cuando salís hacia otro root
+                    popEnterTransition = { EnterTransition.None },
+                    popExitTransition = { ExitTransition.None }
+                ) {
                     HomeScreen(
                         onNavigate = { navController.navigate(Detail) }
                     )
                 }
-                composable<Detail> {
+
+                composable<Detail>(
+                    enterTransition = {
+                        if (initialState.destination.route == Home::class.qualifiedName) {
+                            slideIntoContainer(
+                                AnimatedContentTransitionScope.SlideDirection.Left,
+                                animationSpec = tween(300)
+                            )
+                        } else null
+                    },
+                    popExitTransition = {
+                        if (targetState.destination.route == Home::class.qualifiedName) {
+                            slideOutOfContainer(
+                                AnimatedContentTransitionScope.SlideDirection.Right,
+                                animationSpec = tween(300)
+                            )
+                        } else null
+                    }
+                ) {
                     DetailScreen(onBack = { navController.popBackStack() })
                 }
+
             }
 
             // Grafo Lista
             navigation<ListGraph>(startDestination = List) {
-                composable<List> {
+                composable<List>(
+                    enterTransition = { EnterTransition.None },
+                    exitTransition = { ExitTransition.None },
+                    popEnterTransition = { EnterTransition.None },
+                    popExitTransition = { ExitTransition.None }
+                ) {
                     ListScreen()
                 }
             }
 
             // Grafo Perfil
             navigation<ProfileGraph>(startDestination = Profile) {
-                composable<Profile> {
+                composable<Profile>(
+                    enterTransition = { EnterTransition.None },
+                    exitTransition = { ExitTransition.None },
+                    popEnterTransition = { EnterTransition.None },
+                    popExitTransition = { ExitTransition.None }
+                ) {
                     ProfileScreen()
                 }
             }

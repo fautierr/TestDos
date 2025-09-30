@@ -6,13 +6,13 @@ import androidx.compose.ui.graphics.Color
 val Blue = Color(0xFF4A5DF9)       // tu primary
 
 // ---------- Light neutrals ----------
-val LightBackground = Color(0xFFFFFFFF)
+val LightBackground = Color(0xFFF7F7F7)
 val LightSurface = Color(0xFFE8E9EB)
 val OnLightText = Color(0xFF101218) // texto sobre fondos claros
 
 // ---------- Dark neutrals ----------
 val DarkBackground = Color(0xFF101218) // el que diste
-val DarkSurface = Color(0xFF1A1A1A)    // surfaces en dark que pediste
+val DarkSurface = Color(0xFF17181F) // surfaces en dark que pediste
 val OnDarkText = Color(0xFFE6E8F0)     // texto "blanco suave" en dark
 
 // ---------- Secondary / Tertiary (de prueba) ----------

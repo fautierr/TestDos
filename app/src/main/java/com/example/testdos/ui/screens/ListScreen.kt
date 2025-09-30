@@ -9,6 +9,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.tooling.preview.Preview
@@ -40,17 +41,18 @@ fun ListScreenContent(characters: List<CharacterDto>) {
                 Card(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(vertical = 8.dp), // separación entre cards
+                        .padding(vertical = 8.dp),
                     shape = MaterialTheme.shapes.medium,
                     colors = CardDefaults.cardColors(
-                        //containerColor = MaterialTheme.colorScheme.surface // sin color de fondo
-                        containerColor = Color.Transparent
+                        containerColor = MaterialTheme.colorScheme.surface // sin color de fondo
+                        // containerColor = Color.Transparent
                     ),
-                    border = BorderStroke(
-                        width = 2.dp,
+
+                   /* border = BorderStroke(
+                        width = 0.1.dp,
                         color = MaterialTheme.colorScheme.surface
-                    ),
-                  /*  elevation = CardDefaults.cardElevation(
+                    ),*/
+                   /* elevation = CardDefaults.cardElevation(
                         defaultElevation = 0.1.dp, // aumenta la “sombra”
                     )*/
                 ) {
