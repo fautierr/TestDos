@@ -23,7 +23,7 @@ val Orange = Color(0xFFFF9800)   // tertiary de prueba
 val ErrorLight = Color(0xFFD32F2F)
 val ErrorDark = Color(0xFFE53935)
 val SuccessLight = Color(0xFF2E7D32)
-val SuccessDark = Color(0xFF43A047)
+val SuccessDark = Color(0xFF238636)
 val WarningLight = Color(0xFFED6C02)
 val WarningDark = Color(0xFFFFA000)
 
