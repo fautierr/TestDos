@@ -2,8 +2,12 @@ package com.example.testdos.navigation
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.List
+import androidx.compose.material.icons.automirrored.outlined.List
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.outlined.Home
+import androidx.compose.material.icons.outlined.Person
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -11,6 +15,7 @@ import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
@@ -22,20 +27,28 @@ fun BottomNavigationBar(navController: NavHostController) {
     val currentDestination = navBackStackEntry?.destination
 
     NavigationBar(
-        containerColor = MaterialTheme.colorScheme.background // <-- acá le decís que use el surface
+        containerColor = MaterialTheme.colorScheme.background
     ) {
         items.forEach { graph ->
-            val (icon, label) = when (graph) {
-                HomeGraph -> Icons.Default.Home to "Inicio"
-                ListGraph -> Icons.AutoMirrored.Filled.List to "Lista"
-                ProfileGraph -> Icons.Default.Person to "Perfil"
-                else -> Icons.Default.Home to "Otro"
+            val selected = currentDestination?.hierarchy?.any { it.route == graph::class.qualifiedName } == true
+
+            val (filledIcon, outlinedIcon, label) = when (graph) {
+                HomeGraph -> Triple(Icons.Filled.Home, Icons.Outlined.Home, "Inicio")
+                ListGraph -> Triple(Icons.AutoMirrored.Filled.List,
+                    Icons.AutoMirrored.Outlined.List, "Lista")
+                ProfileGraph -> Triple(Icons.Filled.Person, Icons.Outlined.Person, "Perfil")
+                else -> Triple(Icons.Filled.Home, Icons.Outlined.Home, "Otro")
             }
 
             NavigationBarItem(
-                icon = { androidx.compose.material3.Icon(icon, contentDescription = null) },
+                icon = {
+                    Icon(
+                        imageVector = if (selected) filledIcon else outlinedIcon,
+                        contentDescription = label
+                    )
+                },
                 label = { Text(label) },
-                selected = currentDestination?.hierarchy?.any { it.route == graph::class.qualifiedName } == true,
+                selected = selected,
                 onClick = {
                     navController.navigate(graph) {
                         popUpTo(navController.graph.id) {
@@ -44,22 +57,12 @@ fun BottomNavigationBar(navController: NavHostController) {
                         launchSingleTop = true
                         restoreState = true
                     }
-                    /*navController.navigate(graph) {
-                       popUpTo(navController.graph.startDestinationId) {
-                           inclusive = false
-                       }
-                       launchSingleTop = true
-                       restoreState = false // 👈 con este fragmento se puede volver siempre a la vista principal
-                   }*/
                 },
                 colors = NavigationBarItemDefaults.colors(
-                    // selectedIconColor = MaterialTheme.colorScheme.onSurface,
-                    // unselectedIconColor = MaterialTheme.colorScheme.onSurface,
-                    // selectedTextColor = MaterialTheme.colorScheme.onSurface,
-                    // unselectedTextColor = MaterialTheme.colorScheme.onSurface,
-                    indicatorColor = MaterialTheme.colorScheme.surface
+                    indicatorColor = Color.Transparent
                 )
             )
         }
     }
 }
+
