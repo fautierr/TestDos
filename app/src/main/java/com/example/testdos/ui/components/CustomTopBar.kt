@@ -9,7 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.width
-
+import androidx.compose.ui.text.font.FontWeight
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -25,6 +25,9 @@ fun CustomTopBar(
         title = {
             Text(
                 text = title,
+                style = MaterialTheme.typography.titleLarge.copy(
+                    fontWeight = FontWeight.SemiBold // o Bold, Medium
+                )
                 // modifier = Modifier.padding(bottom = 10.dp) // espacio sutil abajo
             )
         },

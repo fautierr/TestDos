@@ -16,13 +16,16 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.ReadOnlyComposable
 
 private val LightColorScheme = lightColorScheme(
-    primary = Blue,
-    onPrimary = White,
+    primary = CustomDark,
+    onPrimary = CustomWhite,
 
-    secondary = Purple,
+    primaryContainer = CustomDark,
+    onPrimaryContainer = CustomWhite,
+
+    secondary = GrayBlue,
     onSecondary = White,
 
-    tertiary = Orange,
+    tertiary = RedAccent,
     onTertiary = Black,
 
     background = LightBackground,
@@ -31,20 +34,26 @@ private val LightColorScheme = lightColorScheme(
     surface = LightSurface,
     onSurface = OnLightText,
 
+    outline = LightOutline,
+    outlineVariant = LightOutlineVariant,
+
     error = ErrorLight,
     onError = White,
 
 )
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Blue,
-    onPrimary = White,
+    primary = CustomWhite,
+    onPrimary = CustomDark,
 
-    secondary = Purple,
+    primaryContainer = CustomWhite,
+    onPrimaryContainer = CustomDark,
+
+    secondary = GrayBlue,
     onSecondary = White,
 
-    tertiary = Orange,
-    onTertiary = Black,
+    tertiary = RedAccent,
+    onTertiary = White,
 
     background = DarkBackground,
     onBackground = OnDarkText,
@@ -52,24 +61,36 @@ private val DarkColorScheme = darkColorScheme(
     surface = DarkSurface,
     onSurface = OnDarkText,
 
+    outline = DarkOutline,
+    outlineVariant = DarkOutlineVariant,
+
     error = ErrorDark,
     onError = White
 )
 
 @Immutable
 data class ExtendedColors(
+    val brand: Color,
     val success: Color,
     val warning: Color,
+    val medium: Color,
+    val disabled: Color,
 )
 
 val LightExtendedColors = ExtendedColors(
+    brand = BlueSky,
     success = SuccessLight,
     warning = WarningLight,
+    medium = OnLightTextMedium,
+    disabled = OnLightTextDisabled,
 )
 
 val DarkExtendedColors = ExtendedColors(
+    brand = BlueSky,
     success = SuccessDark,
     warning = WarningDark,
+    medium = OnDarkTextMedium,
+    disabled = OnDarkTextDisabled,
 )
 
 val LocalExtendedColors = staticCompositionLocalOf {
