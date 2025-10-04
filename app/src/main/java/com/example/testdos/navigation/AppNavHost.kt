@@ -24,12 +24,12 @@ import androidx.compose.material3.MaterialTheme
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AppNavHost() {
-    SetupStatusBar()
+    // SetupStatusBar()
     val navController = rememberNavController()
     val shouldShowBottomBar = shouldShowBottomBar(navController)
 
     Scaffold(
-        containerColor = MaterialTheme.colorScheme.background,
+        // containerColor = MaterialTheme.colorScheme.background,
         bottomBar = {
             if (shouldShowBottomBar) {
             BottomNavigationBar(navController = navController)

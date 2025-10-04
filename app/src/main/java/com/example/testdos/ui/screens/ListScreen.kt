@@ -48,10 +48,10 @@ fun ListScreenContent(characters: List<CharacterDto>) {
                         // containerColor = Color.Transparent
                     ),
 
-                   /* border = BorderStroke(
+                    border = BorderStroke(
                         width = 0.1.dp,
-                        color = MaterialTheme.colorScheme.surface
-                    ),*/
+                        color = MaterialTheme.colorScheme.outline
+                    ),
                    /* elevation = CardDefaults.cardElevation(
                         defaultElevation = 0.1.dp, // aumenta la “sombra”
                     )*/
@@ -61,7 +61,7 @@ fun ListScreenContent(characters: List<CharacterDto>) {
                             .fillMaxWidth()
                             .padding(16.dp)
                     ) {
-                        Image(
+                       /* Image(
                             painter = rememberAsyncImagePainter(character.image),
                             contentDescription = character.name,
                             // modifier = Modifier.size(64.dp)
@@ -69,7 +69,7 @@ fun ListScreenContent(characters: List<CharacterDto>) {
                                 .height(120.dp)          // más alta
                                 .aspectRatio(1f)         // cuadrada
                                 .clip(MaterialTheme.shapes.medium)
-                        )
+                        )*/
                         Spacer(modifier = Modifier.width(12.dp))
                         Column {
                             Text(

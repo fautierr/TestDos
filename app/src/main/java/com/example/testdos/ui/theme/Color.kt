@@ -2,30 +2,55 @@ package com.example.testdos.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
+val CustomWhite = Color(0xFFF7F7F7)
+val CustomDark = Color(0xFF101218)
+
 // ---------- Brand ----------
-val Blue = Color(0xFF4A5DF9)       // tu primary
+val BlueSky = Color(0xFF3498DB)
+
 
 // ---------- Light neutrals ----------
-val LightBackground = Color(0xFFF7F7F7)
+val LightBackground = CustomWhite
 val LightSurface = Color(0xFFE8E9EB)
-val OnLightText = Color(0xFF101218) // texto sobre fondos claros
+val OnLightText = CustomDark // texto sobre fondos claros
+
+// Bordes y outlines
+val LightOutline = Color(0xFFD0D1D3)         // un gris un poco más oscuro que el surface
+val LightOutlineVariant = Color(0xFFB9BBBE)  // opcional
+
+val OnLightTextMedium = Color(0xFF5A5A5A)    // gris medio
+val OnLightTextDisabled = Color(0xFF9E9E9E)  // gris claro
+
 
 // ---------- Dark neutrals ----------
-val DarkBackground = Color(0xFF101218) // el que diste
-val DarkSurface = Color(0xFF17181F) // surfaces en dark que pediste
+val DarkBackground = CustomDark // el que diste
+val DarkSurface = Color(0xFF17181F)         // surfaces en dark que pediste
 val OnDarkText = Color(0xFFE6E8F0)     // texto "blanco suave" en dark
 
+// Bordes y outlines
+val DarkOutline = Color(0xFF3D444D)         // un gris apenas más claro que el surface
+val DarkOutlineVariant = Color(0xFF3A3B42)  // opcional, para variantes más suaves
+
+val OnDarkTextMedium = Color(0xFFB0B3BA)     // gris medio azulado
+val OnDarkTextDisabled = Color(0xFF6E6E6E)   // gris apagado
+
+
+
 // ---------- Secondary / Tertiary (de prueba) ----------
-val Purple = Color(0xFF9C27B0)   // secondary de prueba
-val Orange = Color(0xFFFF9800)   // tertiary de prueba
+val GrayBlue = Color(0xFF566573)   // (azul grisáceo)
+val RedAccent = Color(0xFFD64541)   // rojo de acento
+
+
 
 // ---------- Feedback colors ----------
 val ErrorLight = Color(0xFFD32F2F)
-val ErrorDark = Color(0xFFE53935)
+val ErrorDark = Color(0xFFB54E4E)
 val SuccessLight = Color(0xFF2E7D32)
-val SuccessDark = Color(0xFF238636)
-val WarningLight = Color(0xFFED6C02)
-val WarningDark = Color(0xFFFFA000)
+val SuccessDark = Color(0xFF3F7A46)
+val WarningLight = Color(0xFFC95B00)
+val WarningDark = Color(0xFFDBBF6E)
+
+
 
 // ---------- Generic helpers ----------
 val White = Color(0xFFFFFFFF)
