@@ -18,107 +18,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.testdos.ui.components.CustomTopBar
 import com.example.testdos.ui.theme.extendedColors
 import com.example.testdos.R
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-/*fun HomeScreen(onNavigate: () -> Unit) {
-    Scaffold(
-        // modifier = Modifier.background(MaterialTheme.colorScheme.primary),
-        topBar = {
-            CustomTopBar(title = "Inicio")
-        }
-    ) { innerPadding ->
-        Column(
-            modifier = Modifier
-                .padding(innerPadding)
-                .padding(16.dp)
-        ) {
-            Text(text = "Bienvenido a la Home", style = MaterialTheme.typography.headlineSmall)
-
-            Spacer(modifier = Modifier.height(20.dp))
-
-            Button(
-                onClick = onNavigate,
-            ) {
-                Text("Ir al detalle")
-            }
-            Button(
-                onClick = onNavigate,
-                 colors = ButtonDefaults.buttonColors(
-                     containerColor = MaterialTheme.extendedColors.success,
-                     // contentColor = MaterialTheme.colorScheme.onTertiary
-                 )
-            ) {
-                Text("Ir al detalle")
-            }
-            Button(
-                onClick = onNavigate,
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = MaterialTheme.extendedColors.warning,
-                    // contentColor = MaterialTheme.colorScheme.onTertiary
-                )
-            ) {
-                Text("Ir al detalle")
-            }
-            Button(
-                onClick = onNavigate,
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = MaterialTheme.colorScheme.error,
-                    // contentColor = MaterialTheme.colorScheme.onTertiary
-                )
-            ) {
-                Text("Ir al detalle")
-            }
-        }
-    }
-}*/
-
-/*fun HomeScreen(onNavigate: () -> Unit) {
-    Scaffold(
-        topBar = { CustomTopBar(title = "Inicio") },
-        floatingActionButton = {
-            FloatingActionButton(
-                onClick = { *//* acción *//* },
-                containerColor = MaterialTheme.colorScheme.primary,
-                contentColor = MaterialTheme.colorScheme.surface,
-                        shape = CircleShape
-            ) {
-                Icon(Icons.Default.Add, contentDescription = "Agregar")
-            }
-        }
-    ) { innerPadding ->
-        Column(
-            modifier = Modifier
-                .padding(innerPadding)
-                .padding(16.dp)
-        ) {
-            Text("Origenes", style = MaterialTheme.typography.headlineSmall)
-            Button(
-                onClick = onNavigate,
-                *//*colors = ButtonDefaults.buttonColors(
-                    containerColor = MaterialTheme.colorScheme.surface,
-                )*//*
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = MaterialTheme.colorScheme.surface,
-                    contentColor = MaterialTheme.colorScheme.onSurface
-                )
-            ) {
-                Text("Ir al detalle")
-            }
-            Text("Texto de prueba", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.extendedColors.medium)
-
-        }
-    }
-}*/
-
-
+/*@Composable
 fun HomeScreen(onNavigate: () -> Unit) {
     Scaffold(
         topBar = { CustomTopBar(title = "Inicio") },
         floatingActionButton = {
             FloatingActionButton(
-                onClick = { /* acción */ },
-               /* containerColor = MaterialTheme.colorScheme.onBackground,
-                contentColor = MaterialTheme.colorScheme.background,*/
+                onClick = { *//* acción *//* },
+               *//* containerColor = MaterialTheme.colorScheme.onBackground,
+                contentColor = MaterialTheme.colorScheme.background,*//*
                 shape = CircleShape,
                 elevation = FloatingActionButtonDefaults.elevation(
                     defaultElevation = 0.dp,
@@ -255,44 +163,110 @@ fun HomeScreen(onNavigate: () -> Unit) {
             ) {
                 Text("Ir al detalle")
             }
-           /* Button(
-                onClick = onNavigate,
-                colors = ButtonDefaults.buttonColors(
-                    *//*containerColor = MaterialTheme.extendedColors.warning,
-                    contentColor = MaterialTheme.colorScheme.onPrimary*//*
-                   *//* containerColor = MaterialTheme.extendedColors.success,
-                    contentColor = MaterialTheme.colorScheme.onSecondary*//*
-                    *//*containerColor = MaterialTheme.colorScheme.error,
-                    contentColor = MaterialTheme.colorScheme.onSecondary*//*
-                )
-            ) {
-                Text("Ir al detalle")
-            }*/
-           /* Button(
-                onClick = onNavigate,
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = MaterialTheme.extendedColors.warning,
-                    contentColor = MaterialTheme.colorScheme.onSurface
-                )
-            ) {
-                Text("Ir al detalle")
-            }*/
-            /*Button(
-                onClick = onNavigate,
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = MaterialTheme.colorScheme.error,
-                    contentColor = MaterialTheme.colorScheme.onSurface
-                )
-            ) {
-                Text("Ir al detalle")
-            }*/
         }
     }
-}
+}*/
 
 
+/*
 @Preview(showBackground = true)
 @Composable
 fun HomeScreenPreview() {
     HomeScreen(onNavigate = {})
+}*/
+
+@Composable
+fun HomeInfoCard(
+    title: String,
+    value: String,
+    icon: Int,
+    iconTint: Color
+) {
+    Card(
+        modifier = Modifier.fillMaxWidth(),
+        colors = CardDefaults.cardColors(containerColor = Color.Transparent),
+        elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
+    ) {
+        Column(modifier = Modifier.padding(16.dp)) {
+            Text(
+                text = title,
+                style = MaterialTheme.typography.titleMedium
+            )
+            Spacer(modifier = Modifier.height(4.dp))
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = value,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.extendedColors.medium
+                )
+                Icon(
+                    painter = painterResource(id = icon),
+                    contentDescription = null,
+                    tint = iconTint
+                )
+            }
+        }
+    }
+}
+
+@Composable
+fun HomeScreen(onNavigate: () -> Unit) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp),
+        verticalArrangement = Arrangement.spacedBy(24.dp)
+    ) {
+        // --- Item 1: Ventas de hoy ---
+        HomeInfoCard(
+            title = "Ventas de hoy",
+            value = "$1890",
+            icon = R.drawable.arrow_upward,
+            iconTint = MaterialTheme.extendedColors.success
+        )
+
+        HorizontalDivider(
+            thickness = 1.dp,
+            color = MaterialTheme.colorScheme.surface
+        )
+
+        // --- Item 2: Productos vendidos ---
+        HomeInfoCard(
+            title = "Productos vendidos",
+            value = "23",
+            icon = R.drawable.arrow_upward,
+            iconTint = MaterialTheme.extendedColors.success
+        )
+
+        HorizontalDivider(
+            thickness = 1.dp,
+            color = MaterialTheme.colorScheme.surface
+        )
+
+        // --- Item 3: Control de stock ---
+        HomeInfoCard(
+            title = "Control de stock",
+            value = "2 producto(s) necesitan reposición",
+            icon = R.drawable.arrow_downward,
+            iconTint = MaterialTheme.colorScheme.error
+        )
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        // --- Botón de navegación ---
+        Button(
+            onClick = onNavigate,
+            colors = ButtonDefaults.buttonColors(
+                containerColor = MaterialTheme.colorScheme.surface,
+                contentColor = MaterialTheme.colorScheme.onSurface
+            ),
+            border = BorderStroke(0.1.dp, MaterialTheme.colorScheme.onSurface.copy(alpha = 0.3f))
+        ) {
+            Text("Ir al detalle")
+        }
+    }
 }

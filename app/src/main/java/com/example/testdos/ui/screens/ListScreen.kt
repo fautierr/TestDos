@@ -29,63 +29,60 @@ fun ListScreen(viewModel: ListViewModel = viewModel()) {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ListScreenContent(characters: List<CharacterDto>) {
-    Scaffold(
-        topBar = { CustomTopBar(title = "Lista") }
-    ) { innerPadding ->
-        LazyColumn(
-            modifier = Modifier
-                .padding(innerPadding)
-                .padding(16.dp)
-        ) {
-            items(characters) { character ->
-                Card(
+    LazyColumn(
+        modifier = Modifier
+            // .padding(innerPadding)
+            .padding(16.dp)
+    ) {
+        items(characters) { character ->
+            Card(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 8.dp),
+                shape = MaterialTheme.shapes.medium,
+                colors = CardDefaults.cardColors(
+                    containerColor = MaterialTheme.colorScheme.surface // sin color de fondo
+                    // containerColor = Color.Transparent
+                ),
+
+                border = BorderStroke(
+                    width = 0.1.dp,
+                    color = MaterialTheme.colorScheme.outline
+                ),
+                /* elevation = CardDefaults.cardElevation(
+                     defaultElevation = 0.1.dp, // aumenta la “sombra”
+                 )*/
+            ) {
+                Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(vertical = 8.dp),
-                    shape = MaterialTheme.shapes.medium,
-                    colors = CardDefaults.cardColors(
-                        containerColor = MaterialTheme.colorScheme.surface // sin color de fondo
-                        // containerColor = Color.Transparent
-                    ),
-
-                    border = BorderStroke(
-                        width = 0.1.dp,
-                        color = MaterialTheme.colorScheme.outline
-                    ),
-                   /* elevation = CardDefaults.cardElevation(
-                        defaultElevation = 0.1.dp, // aumenta la “sombra”
-                    )*/
+                        .padding(16.dp)
                 ) {
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(16.dp)
-                    ) {
-                       /* Image(
-                            painter = rememberAsyncImagePainter(character.image),
-                            contentDescription = character.name,
-                            // modifier = Modifier.size(64.dp)
-                            modifier = Modifier
-                                .height(120.dp)          // más alta
-                                .aspectRatio(1f)         // cuadrada
-                                .clip(MaterialTheme.shapes.medium)
-                        )*/
-                        Spacer(modifier = Modifier.width(12.dp))
-                        Column {
-                            Text(
-                                character.name,
-                                style = MaterialTheme.typography.titleMedium
-                            )
-                            Text(
-                                character.status,
-                                style = MaterialTheme.typography.bodyMedium
-                            )
-                        }
+                    /* Image(
+                         painter = rememberAsyncImagePainter(character.image),
+                         contentDescription = character.name,
+                         // modifier = Modifier.size(64.dp)
+                         modifier = Modifier
+                             .height(120.dp)          // más alta
+                             .aspectRatio(1f)         // cuadrada
+                             .clip(MaterialTheme.shapes.medium)
+                     )*/
+                    Spacer(modifier = Modifier.width(12.dp))
+                    Column {
+                        Text(
+                            character.name,
+                            style = MaterialTheme.typography.titleMedium
+                        )
+                        Text(
+                            character.status,
+                            style = MaterialTheme.typography.bodyMedium
+                        )
                     }
                 }
             }
         }
     }
+
 }
 
 @Preview(showBackground = true)
