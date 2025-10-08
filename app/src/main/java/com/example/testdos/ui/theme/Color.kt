@@ -23,8 +23,12 @@ val OnLightTextDisabled = Color(0xFF9E9E9E)  // gris claro
 
 
 // ---------- Dark neutrals ----------
-val DarkBackground = CustomDark // el que diste
-val DarkSurface = Color(0xFF17181F)         // surfaces en dark que pediste
+/*val DarkBackground = CustomDark*/ // el que diste
+val DarkBackground = Color(0xFF141518)
+
+/*val DarkSurface = Color(0xFF17181F)*/ // surfaces en dark que pediste
+/*val DarkSurface = Color(0xFF1c1d26)*/ // prueba azul oscuro mas claro
+val DarkSurface = Color(0xFF1E2024)
 val OnDarkText = Color(0xFFE6E8F0)     // texto "blanco suave" en dark
 
 // Bordes y outlines

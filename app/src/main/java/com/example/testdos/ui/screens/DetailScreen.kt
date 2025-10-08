@@ -11,25 +11,15 @@ import com.example.testdos.ui.components.CustomTopBar
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DetailScreen(onBack: () -> Unit) {
-    Scaffold(
-        topBar = {
-            CustomTopBar(
-                title = "Detalle",
-                showBackButton = true,
-                onBack = onBack
-            )
-        }
-    ) { innerPadding ->
-        Column(
-            modifier = Modifier
-                .padding(innerPadding)
-                .padding(16.dp)
-        ) {
-            Text(text = "Esta es la pantalla de detalle", style = MaterialTheme.typography.headlineSmall)
+    Column(
+        modifier = Modifier
+            .padding(16.dp)
+    ) {
+        Text(text = "Esta es la pantalla de detalle", style = MaterialTheme.typography.headlineSmall)
 
-            Spacer(modifier = Modifier.height(20.dp))
-        }
+        Spacer(modifier = Modifier.height(20.dp))
     }
+
 }
 
 @Preview(showBackground = true)

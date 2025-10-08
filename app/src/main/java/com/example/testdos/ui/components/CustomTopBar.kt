@@ -20,12 +20,12 @@ fun CustomTopBar(
     onBack: (() -> Unit)? = null
 ) {
     CenterAlignedTopAppBar(
-        modifier = Modifier
-            .height(60.dp), // altura estándar de Material3
+       /* modifier = Modifier
+            .height(60.dp), */// altura estándar de Material3
         title = {
             Text(
                 text = title,
-                style = MaterialTheme.typography.titleLarge.copy(
+                style = MaterialTheme.typography.titleMedium.copy(
                     fontWeight = FontWeight.SemiBold // o Bold, Medium
                 )
                 // modifier = Modifier.padding(bottom = 10.dp) // espacio sutil abajo
