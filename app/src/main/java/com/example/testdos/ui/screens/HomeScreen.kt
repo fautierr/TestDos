@@ -1,6 +1,7 @@
 package com.example.testdos.ui.screens
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
@@ -11,7 +12,9 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.tooling.preview.Preview
@@ -215,58 +218,52 @@ fun HomeInfoCard(
 
 @Composable
 fun HomeScreen(onNavigate: () -> Unit) {
-    Column(
+    // 🔹 1. Envolvemos todo en un Box para poder poner un fondo detrás
+    Box(
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp),
-        verticalArrangement = Arrangement.spacedBy(24.dp)
     ) {
-        // --- Item 1: Ventas de hoy ---
-        HomeInfoCard(
-            title = "Ventas de hoy",
-            value = "$1890",
-            icon = R.drawable.arrow_upward,
-            iconTint = MaterialTheme.extendedColors.success
+        // 🔹 2. Imagen de fondo (SVG o PNG)
+        Image(
+            painter = painterResource(id = R.drawable.feed_test), // 👈 tu SVG o imagen
+            contentDescription = null,
+            // contentScale = ContentScale.Crop, // o Fit, según el estilo del SVG
+            modifier = Modifier
+                .size(320.dp) // 👈 ajustá este valor según cómo se vea
+                .align(Alignment.Center) // o Alignment.BottomCenter si querés que quede abajo
+                // .alpha(0.15f) // opacidad para que no distraiga // 👈 opcional: bajás la opacidad si querés que no distraiga
         )
 
-        HorizontalDivider(
-            thickness = 1.dp,
-            color = MaterialTheme.colorScheme.surface
-        )
-
-        // --- Item 2: Productos vendidos ---
-        HomeInfoCard(
-            title = "Productos vendidos",
-            value = "23",
-            icon = R.drawable.arrow_upward,
-            iconTint = MaterialTheme.extendedColors.success
-        )
-
-        HorizontalDivider(
-            thickness = 1.dp,
-            color = MaterialTheme.colorScheme.surface
-        )
-
-        // --- Item 3: Control de stock ---
-        HomeInfoCard(
-            title = "Control de stock",
-            value = "2 producto(s) necesitan reposición",
-            icon = R.drawable.arrow_downward,
-            iconTint = MaterialTheme.colorScheme.error
-        )
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        // --- Botón de navegación ---
-        Button(
-            onClick = onNavigate,
-            colors = ButtonDefaults.buttonColors(
-                containerColor = MaterialTheme.colorScheme.surface,
-                contentColor = MaterialTheme.colorScheme.onSurface
-            ),
-            border = BorderStroke(0.1.dp, MaterialTheme.colorScheme.onSurface.copy(alpha = 0.3f))
+        // 🔹 3. Contenido principal sobre el fondo
+        Column(
+            modifier = Modifier
+                .fillMaxSize(),
+                //.padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(24.dp)
         ) {
-            Text("Ir al detalle")
+            HomeInfoCard(
+                title = "Ventas de hoy",
+                value = "$1890",
+                icon = R.drawable.arrow_upward,
+                iconTint = MaterialTheme.extendedColors.success
+            )
+
+            HorizontalDivider(
+                thickness = 1.dp,
+                color = MaterialTheme.colorScheme.surface
+            )
+
+            Button(
+                onClick = onNavigate,
+                colors = ButtonDefaults.buttonColors(
+                    // containerColor = MaterialTheme.colorScheme.surface,
+                    containerColor = MaterialTheme.extendedColors.brand,
+                    contentColor = MaterialTheme.colorScheme.onSurface
+                ),
+                // border = BorderStroke(0.1.dp, MaterialTheme.colorScheme.onSurface.copy(alpha = 0.3f))
+            ) {
+                Text("Ir al detalle")
+            }
         }
     }
 }
