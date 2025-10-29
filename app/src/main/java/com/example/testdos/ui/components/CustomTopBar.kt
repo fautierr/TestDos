@@ -126,7 +126,6 @@ fun CustomTopBar(
                     disabledContainerColor = MaterialTheme.colorScheme.surface,
                     focusedIndicatorColor = Color.Transparent,
                     unfocusedIndicatorColor = Color.Transparent,
-                    cursorColor = MaterialTheme.extendedColors.brand
                 ),
                 trailingIcon = { // 🔹 icono a la derecha
                     Icon(

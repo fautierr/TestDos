@@ -2,8 +2,10 @@ package com.example.testdos.ui.screens
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.KeyboardArrowDown
@@ -16,11 +18,19 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.testdos.ui.components.CustomTopBar
 import com.example.testdos.ui.theme.extendedColors
 import com.example.testdos.R
+
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.withStyle
+
+
 /*@Composable
 fun HomeScreen(onNavigate: () -> Unit) {
     Scaffold(
@@ -216,7 +226,7 @@ fun HomeInfoCard(
     }
 }
 
-@Composable
+/*@Composable
 fun HomeScreen(onNavigate: () -> Unit) {
     // 🔹 1. Envolvemos todo en un Box para poder poner un fondo detrás
     Box(
@@ -225,7 +235,7 @@ fun HomeScreen(onNavigate: () -> Unit) {
     ) {
         // 🔹 2. Imagen de fondo (SVG o PNG)
         Image(
-            painter = painterResource(id = R.drawable.feed_test), // 👈 tu SVG o imagen
+            painter = painterResource(R.drawable.blockchain_test_six), // 👈 tu SVG o imagen
             contentDescription = null,
             // contentScale = ContentScale.Crop, // o Fit, según el estilo del SVG
             modifier = Modifier
@@ -257,13 +267,111 @@ fun HomeScreen(onNavigate: () -> Unit) {
                 onClick = onNavigate,
                 colors = ButtonDefaults.buttonColors(
                     // containerColor = MaterialTheme.colorScheme.surface,
-                    containerColor = MaterialTheme.extendedColors.brand,
                     contentColor = MaterialTheme.colorScheme.onSurface
                 ),
                 // border = BorderStroke(0.1.dp, MaterialTheme.colorScheme.onSurface.copy(alpha = 0.3f))
             ) {
                 Text("Ir al detalle")
             }
+        }
+    }
+}*/
+
+/*@Composable
+fun HomeScreen(onNavigate: () -> Unit) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(24.dp)
+    ) {
+        // Contenido centrado (título y subtítulo)
+        Column(
+            modifier = Modifier
+                .align(Alignment.Center)
+                .fillMaxWidth(),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            *//*Text(
+                text = "Bienvenido a Valtarius",
+                style = MaterialTheme.typography.displaySmall.copy(fontWeight = FontWeight.Bold),
+                textAlign = TextAlign.Center
+            )*//*
+            Text(
+                text = buildAnnotatedString {
+                    withStyle(
+                        style = SpanStyle(
+                            color = MaterialTheme.colorScheme.onBackground,
+                            fontWeight = FontWeight.Bold
+                        )
+                    ) {
+                        append("Bienvenido a ")
+                    }
+                    withStyle(
+                        style = SpanStyle(
+                            color = MaterialTheme.colorScheme.primary,
+                            fontWeight = FontWeight.Bold
+                        )
+                    ) {
+                        append("Valtarius")
+                    }
+                },
+                style = MaterialTheme.typography.displaySmall,
+                textAlign = TextAlign.Center
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+            Text(
+                text = "Transformamos tus ideas en software de alto impacto.",
+                style = MaterialTheme.typography.bodyLarge,
+                color = MaterialTheme.extendedColors.medium,
+                textAlign = TextAlign.Center
+            )
+        }
+
+        // Botón al fondo
+        Button(
+            onClick = {},
+            enabled = true,
+            modifier = Modifier
+                .fillMaxWidth()
+                .align(Alignment.BottomCenter),
+            // .height(48.dp),
+            contentPadding = PaddingValues(
+                vertical = 16.dp     // Ajusta este valor para controlar la altura
+            )
+
+        ) {
+            Text(
+                text = "Continuar",
+                fontWeight = FontWeight.Medium,
+                style = MaterialTheme.typography.bodyLarge
+                // style = MaterialTheme.typography.titleLarge.copy(fontSize = 16.sp)
+            )
+        }
+    }
+}*/
+
+@Composable
+fun HomeScreen(onNavigate: () -> Unit) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize(),
+        contentAlignment = Alignment.Center
+    ) {
+        Box(
+            modifier = Modifier
+                .size(180.dp)
+                .background(
+                    color = MaterialTheme.colorScheme.primary,
+                    shape = RoundedCornerShape(16.dp)
+                ),
+            contentAlignment = Alignment.Center
+        ) {
+            Text(
+                text = "#615DF9",
+                color = MaterialTheme.colorScheme.onPrimary,
+                style = MaterialTheme.typography.titleLarge,
+                fontWeight = FontWeight.Bold
+            )
         }
     }
 }
