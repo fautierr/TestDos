@@ -139,19 +139,18 @@ fun BottomActionsBar(
             onClick = onVerResumen,
             enabled = true,
             modifier = Modifier
-                .fillMaxWidth()
-                .height(48.dp),
-            colors = ButtonDefaults.buttonColors(
-                /*containerColor = MaterialTheme.colorScheme.primary,
-                contentColor = MaterialTheme.colorScheme.onPrimary,*/
-                containerColor = MaterialTheme.extendedColors.brand,
-                contentColor = MaterialTheme.colorScheme.onSecondary,
+                .fillMaxWidth(),
+               // .height(48.dp),
+            contentPadding = PaddingValues(
+                vertical = 15.dp     // Ajusta este valor para controlar la altura
             )
+
         ) {
             Text(
                 text = "Continuar",
                 fontWeight = FontWeight.Medium,
                 style = MaterialTheme.typography.bodyLarge
+                // style = MaterialTheme.typography.titleLarge.copy(fontSize = 16.sp)
             )
         }
     }
@@ -240,7 +239,7 @@ fun ProfileScreen() {
                 style = MaterialTheme.typography.titleMedium.copy(
                     fontWeight = FontWeight.Medium,
                     fontSize = 18.sp,
-                    color = MaterialTheme.colorScheme.onSecondary
+                    color = MaterialTheme.colorScheme.onBackground
                 )
             )
 
@@ -251,164 +250,140 @@ fun ProfileScreen() {
                 // horizontalArrangement = Arrangement.SpaceBetween
             ) {
 
+                ProductCard("Teclado mecánico", "$98050", "11 Sep 2025, 10:42", iconRes = 7, icon = R.drawable.closed_box, estado = EstadoProducto.DISPONIBLE)
+
+                ProductCard("Pads", "$12780", "03 Jun 2025, 22:33", iconRes = 6, icon = R.drawable.inventory, estado = EstadoProducto.BAJO_STOCK)
+
+                ProductCard("Joysticks", "$76820", "15 Ene 2025, 12:10", iconRes = 3,  icon = R.drawable.cash_register, estado = EstadoProducto.DISPONIBLE )
+
+                ProductCard("Joysticks", "$76820", "15 Ene 2025, 12:10", iconRes =  0, icon = R.drawable.mascota_dos, estado = EstadoProducto.NUEVO_INGRESO)
+
+                ProductCard("Teclado mecánico", "$98050", "11 Sep 2025, 10:42", iconRes = 5,  icon = R.drawable.closed_box, estado = EstadoProducto.SIN_MOVIMIENTO)
+
+                ProductCard("Pads", "$12780", "03 Jun 2025, 22:33", iconRes = 6, icon = R.drawable.inventory, estado = EstadoProducto.BAJO_STOCK)
+
+                ProductCard("Joysticks", "$76820", "15 Ene 2025, 12:10", iconRes =  0, icon = R.drawable.hand_coins, estado = EstadoProducto.NUEVO_INGRESO)
+                /*HorizontalDivider(
+                    thickness = 1.dp,
+                    color = MaterialTheme.colorScheme.surface
+
+                )
+                ProductCard("Teclado mecánico", "$98050", "11 Sep 2025, 10:42", iconRes = 7, icon = R.drawable.closed_box, estado = EstadoProducto.DISPONIBLE)
                 HorizontalDivider(
                     thickness = 1.dp,
                     color = MaterialTheme.colorScheme.surface
 
                 )
-                ProductCard("Teclado mecánico", "$98050", "11 Sep 2025, 10:42", iconRes = 7)
+                ProductCard("Pads", "$12780", "03 Jun 2025, 22:33", iconRes = 6, icon = R.drawable.inventory, estado = EstadoProducto.BAJO_STOCK)
                 HorizontalDivider(
                     thickness = 1.dp,
                     color = MaterialTheme.colorScheme.surface
 
                 )
-                ProductCard("Pads", "$12780", "03 Jun 2025, 22:33", iconRes = 6)
+                ProductCard("Joysticks", "$76820", "15 Ene 2025, 12:10", iconRes = 3,  icon = R.drawable.resource_package, estado = EstadoProducto.DISPONIBLE )
                 HorizontalDivider(
                     thickness = 1.dp,
                     color = MaterialTheme.colorScheme.surface
 
                 )
-                ProductCard("Joysticks", "$76820", "15 Ene 2025, 12:10", iconRes = 3 )
+                ProductCard("Joysticks", "$76820", "15 Ene 2025, 12:10", iconRes =  0, icon = R.drawable.closed_box_2, estado = EstadoProducto.NUEVO_INGRESO)
                 HorizontalDivider(
                     thickness = 1.dp,
                     color = MaterialTheme.colorScheme.surface
 
                 )
-                ProductCard("Joysticks", "$76820", "15 Ene 2025, 12:10", iconRes =  0)
+                ProductCard("Teclado mecánico", "$98050", "11 Sep 2025, 10:42", iconRes = 5,  icon = R.drawable.closed_box, estado = EstadoProducto.SIN_MOVIMIENTO)
                 HorizontalDivider(
                     thickness = 1.dp,
                     color = MaterialTheme.colorScheme.surface
 
                 )
-                ProductCard("Teclado mecánico", "$98050", "11 Sep 2025, 10:42", iconRes = 5)
+                ProductCard("Pads", "$12780", "03 Jun 2025, 22:33", iconRes = 6, icon = R.drawable.inventory, estado = EstadoProducto.BAJO_STOCK)
                 HorizontalDivider(
                     thickness = 1.dp,
                     color = MaterialTheme.colorScheme.surface
 
                 )
+                ProductCard("Joysticks", "$76820", "15 Ene 2025, 12:10", iconRes =  0, icon = R.drawable.closed_box_2, estado = EstadoProducto.NUEVO_INGRESO)
+                HorizontalDivider(
+                    thickness = 1.dp,
+                    color = MaterialTheme.colorScheme.surface
+
+                )*/
+
             }
         }
     }
 }
 
-
 /*@Composable
-fun ProductCard(
-    nombre: String,
-    precio: String,
-    stock: String,
-    // categoria: String = "Gaming",
-    iconRes: Int // 👈 nuevo parámetro para el SVG
+fun AvatarTonal(
+    @DrawableRes iconRes: Int,
+    colorIndex: Int = 0, // para cambiar color según posición
+    modifier: Modifier = Modifier
 ) {
-    val isDisabled = stock == "0" // 👈 estado de disabled
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 8.dp) // 👉 padding externo para separar las cards
-            .border( // 👉 borde sutil
-                width = 1.dp,
-                color = MaterialTheme.colorScheme.surfaceVariant,
-                shape = RoundedCornerShape(8.dp),
-            ),
-        shape = RoundedCornerShape(8.dp),
-        colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.background,
-            contentColor = if (isDisabled)
-                MaterialTheme.extendedColors.disabled
-            else
-                MaterialTheme.colorScheme.onSurface
-        )
+
+    val colors = listOf(
+        Color(0xFFEF7A8A),
+        Color(0xFFE7A4EF),
+        Color(0xFF7AE6EC),
+        Color(0xFFEFDE7D),
+        Color(0xFFEE9ED7),
+        Color(0xFFffd1ff),
+        Color(0xFFEFC6BA),
+        Color(0xFFC7A7EC),
+        Color(0xFFEFB7A7),
+        Color(0xFFD4AFEA),
+        Color(0xFFA7EADE),
+        Color(0xFFE3B3E8),
+        Color(0xFFD2E1AD)
+    )
+
+    val backgroundColor = colors[colorIndex % colors.size]
+
+    // ✅ Tomamos los colores del tema Material 3
+    val surface = MaterialTheme.colorScheme.surface
+    val surfaceVariant = MaterialTheme.colorScheme.surfaceVariant
+    Surface(
+        modifier = modifier.size(48.dp),
+        shape = CircleShape,
+
+        // shape = RoundedCornerShape(8.dp),
+        // color = backgroundColor.copy(alpha = 0.12f), // ✅ efecto tonal como FilledTonalButton
+        // color = MaterialTheme.colorScheme.background,
+        color = MaterialTheme.colorScheme.surfaceVariant,
+        shadowElevation = 0.dp, // no sombra extra
+        tonalElevation = 4.dp // ✅ aplica el overlay tonal
+       *//* shadowElevation = 0.dp,
+        tonalElevation = 0.dp, // ✅ lo desactivamos porque vamos a usar un gradiente propio
+        color = Color.Transparent*//* // 👈 IMPORTANTE para que no tape el gradiente
     ) {
-        Row(
+        Box(
+            contentAlignment = Alignment.Center,
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp),
-            horizontalArrangement = Arrangement.spacedBy(12.dp),
-            verticalAlignment = Alignment.Top
+                .fillMaxSize()
+                *//*.background(
+                    brush = Brush.linearGradient( // ✅ Acá se define el degradado
+                        listOf(surface, surfaceVariant)
+                    ),
+                    shape = CircleShape
+                )*//*
+                *//*.border(
+                width = 2.dp,
+                    color = MaterialTheme.colorScheme.surfaceVariant,
+                // color = backgroundColor,
+                    shape = CircleShape
+                // shape = RoundedCornerShape(8.dp)
+
+            )*//*
         ) {
-
-            // ✅ Contenido principal
-            Column(modifier = Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween
-                ) {
-                    Text(
-                        text = nombre,
-                        *//*style = MaterialTheme.typography.titleMedium.copy(
-                            fontSize = 16.sp,
-                            fontWeight = FontWeight.Medium
-                        )*//*
-                        style = MaterialTheme.typography.bodyLarge.copy(
-                            *//*fontWeight = FontWeight.Medium*//*
-                            fontWeight = FontWeight.SemiBold,
-                            *//*fontWeight = FontWeight.Bold,*//*
-                            // fontSize = 16.sp
-                        )
-                        // style = MaterialTheme.typography.bodyLarge
-                    )
-                }
-
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    *//*Text(
-                        text = categoria,
-                        style = MaterialTheme.typography.bodySmall,
-                        color = if (isDisabled) MaterialTheme.extendedColors.disabled else MaterialTheme.extendedColors.medium
-                    )*//*
-                    Text(
-                        text = precio,
-                        color = if(isDisabled) MaterialTheme.extendedColors.disabled else MaterialTheme.extendedColors.medium,
-                        style = MaterialTheme.typography.titleMedium.copy(
-                            fontSize = 16.sp,
-                            fontWeight = FontWeight.Normal
-                        )
-                    )
-
-                    QuantitySelector(isDisabled = isDisabled)
-                }
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    if (stock == "0") {
-                        AssistChip(
-                            onClick = {},
-                            label = {
-                                Text(
-                                    text = "Sin stock",
-                                    style = MaterialTheme.typography.bodySmall
-                                )
-                            },
-                            shape = CircleShape,
-                            border = null,
-                            modifier = Modifier
-                                .height(22.dp),
-                            // .padding(horizontal = 2.dp), // simula padding interno
-                            colors = AssistChipDefaults.assistChipColors(
-                                containerColor = MaterialTheme.colorScheme.error.copy(alpha = 0.12f),
-                                labelColor = MaterialTheme.colorScheme.error
-                            )
-                        )
-
-                    }else{
-                        Text(
-                            text = stock,
-                            style = MaterialTheme.typography.bodySmall,
-                            color = MaterialTheme.extendedColors.medium
-                        )
-                    }
-                }
-                // Spacer(modifier = Modifier.height(12.dp))
-
-                // QuantitySelector()
-
-            }
+            Icon(
+                painter = painterResource(id = iconRes),
+                contentDescription = null,
+                // tint = backgroundColor, // tono sólido
+                tint = MaterialTheme.extendedColors.medium,
+                modifier = Modifier.size(22.dp)
+            )
         }
     }
 }*/
@@ -416,47 +391,64 @@ fun ProductCard(
 @Composable
 fun AvatarTonal(
     @DrawableRes iconRes: Int,
-    colorIndex: Int = 0, // para cambiar color según posición
+    colorIndex: Int = 0,
+    estado: EstadoProducto,
     modifier: Modifier = Modifier
 ) {
-    // Lista de colores tipo Telegram
-    val colors = listOf(
-        Color(0xFFf5576c),
-        Color(0xFFf093fb),
-        Color(0xFF00f2fe),
-        Color(0xFFfee140),
-        Color(0xFFfbc2eb),
-        Color(0xFFffd1ff),
-        Color(0xFFfad0c4),
-        Color(0xFF6930AF),
-        Color(0xFFfda085),
-        Color(0xFFb490ca),
-        Color(0xFF38f9d7),
-        Color(0xFFf093fb),
-        Color(0xFFd4fc79)
-    )
+    // Elegir ícono según el estado
+    val iconToUse = when (estado) {
+        EstadoProducto.BAJO_STOCK -> R.drawable.warning_fill
+        EstadoProducto.SIN_MOVIMIENTO -> R.drawable.timer_fill
+        else -> iconRes
+    }
 
-    val backgroundColor = colors[colorIndex % colors.size]
+    // Elegir color del icono según el estado
+    val iconTint = when (estado) {
+        EstadoProducto.BAJO_STOCK -> MaterialTheme.extendedColors.warning
+        EstadoProducto.SIN_MOVIMIENTO -> Color(0xFF6477b0) // azul suave
+        else -> MaterialTheme.extendedColors.medium
+    }
+
+    // Elegir color de fondo según el estado
+    val backgroundColor = when (estado) {
+        EstadoProducto.BAJO_STOCK -> MaterialTheme.extendedColors.warning.copy(alpha = 0.12f)
+        EstadoProducto.SIN_MOVIMIENTO -> Color(0xFF6477b0).copy(alpha = 0.12f) // azul suave con transparencia
+        else -> MaterialTheme.colorScheme.surfaceVariant
+    }
+    /*val backgroundColor = when (estado) {
+        EstadoProducto.BAJO_STOCK -> MaterialTheme.colorScheme.surface
+        EstadoProducto.SIN_MOVIMIENTO -> MaterialTheme.colorScheme.surface
+        else -> MaterialTheme.colorScheme.surfaceVariant
+    }*/
+    val tonalElevation = when (estado) {
+        EstadoProducto.BAJO_STOCK, EstadoProducto.SIN_MOVIMIENTO -> 4.dp
+        else -> 0.dp
+    }
 
     Surface(
-        modifier = modifier.size(42.dp),
+        modifier = modifier.size(48.dp),
         shape = CircleShape,
-        color = backgroundColor.copy(alpha = 0.12f), // ✅ efecto tonal como FilledTonalButton
-        shadowElevation = 0.dp, // no sombra extra
-        tonalElevation = 4.dp // ✅ aplica el overlay tonal
+        color = backgroundColor,
+        shadowElevation = 0.dp,
+        tonalElevation = tonalElevation
     ) {
-        Box(
-            contentAlignment = Alignment.Center,
-            modifier = Modifier.fillMaxSize()
-        ) {
+        Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()) {
             Icon(
-                painter = painterResource(id = iconRes),
+                painter = painterResource(id = iconToUse),
                 contentDescription = null,
-                tint = backgroundColor, // tono sólido
-                modifier = Modifier.size(22.dp)
+                tint = iconTint,
+                modifier = Modifier.size(24.dp)
             )
         }
     }
+}
+
+
+enum class EstadoProducto {
+    DISPONIBLE,
+    BAJO_STOCK,
+    SIN_MOVIMIENTO,
+    NUEVO_INGRESO
 }
 
 @Composable
@@ -464,7 +456,9 @@ fun ProductCard(
     nombre: String,
     precio: String,
     stock: String,
-    iconRes: Int
+    iconRes: Int,
+    @DrawableRes icon: Int,
+    estado: EstadoProducto
 ) {
     val isDisabled = stock == "0"
     val avatarGradients = listOf(
@@ -491,11 +485,20 @@ fun ProductCard(
     val gradientColors = avatarGradients.random()
     val softGradient = gradientColors.map { it.copy(alpha = 0.75f) }
 
-    val tonalColor = MaterialTheme.extendedColors.brand.copy(alpha = 0.60f)
+    /*val tonalColor = MaterialTheme.extendedColors.brand.copy(alpha = 0.60f)*/
+
+    // Colores para los estados
+    val estadoColor = when (estado) {
+        EstadoProducto.DISPONIBLE -> MaterialTheme.extendedColors.success     // Verde
+        EstadoProducto.BAJO_STOCK -> MaterialTheme.extendedColors.warning     // Amarillo
+        EstadoProducto.SIN_MOVIMIENTO -> Color(0xFF81ADD0) // Azul suave
+        EstadoProducto.NUEVO_INGRESO -> Color(0xFFC086CB)  // Violeta
+    }
     Card(
         modifier = Modifier
-            .fillMaxWidth()
-            .padding( vertical = 8.dp), // padding externo
+            .fillMaxWidth(),
+            /*.padding( // horizontal = 8.dp,
+                vertical = 8.dp), // padding externo*/
         shape = RoundedCornerShape(8.dp),
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.background,
@@ -511,28 +514,24 @@ fun ProductCard(
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
+                    /*.border(
+                        width = 1.dp,
+                        color = MaterialTheme.colorScheme.surfaceVariant,
+                        shape = RoundedCornerShape(8.dp)
+                    )*/
                     .padding(16.dp),
                 horizontalArrangement = Arrangement.spacedBy(12.dp),
-                verticalAlignment = Alignment.Top
+                // verticalAlignment = Alignment.Top
+                verticalAlignment = Alignment.CenterVertically
+
             ) {
-                /*Box(
-                    modifier = Modifier
-                        .size(42.dp)
-                        .clip(CircleShape)
-                        // .background(brush = Brush.linearGradient(softGradient)),
-                        .background(tonalColor), // ✅ sin degradado, tono translúcido como FilledTonalButton
-                    contentAlignment = Alignment.Center
-                ) {
-                    Icon(
-                        painter = painterResource(id = iconRes),
-                        contentDescription = null,
-                        tint = Color.White,
-                        modifier = Modifier.size(22.dp)
-                    )
-                }*/
                 Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
 
-                    AvatarTonal(iconRes = R.drawable.arrow_upward, colorIndex = iconRes)
+                    AvatarTonal(
+                        iconRes = icon,
+                        colorIndex = iconRes,
+                        estado = estado // <-- le pasamos el estado
+                    )
                 }
                 // Contenido principal
                 Column(modifier = Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -550,56 +549,80 @@ fun ProductCard(
 
                         Text(
                             text = precio,
-                            color = if (isDisabled) MaterialTheme.extendedColors.disabled else MaterialTheme.extendedColors.brand,
+                            color = if (isDisabled) MaterialTheme.extendedColors.disabled else MaterialTheme.colorScheme.onBackground,
                             style = MaterialTheme.typography.titleMedium.copy(
                                 fontSize = 16.sp,
-                                fontWeight = FontWeight.Normal
+                                fontWeight = FontWeight.SemiBold
                             )
                         )
+
                     }
 
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceBetween,
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        /*Text(
-                            text = precio,
-                            color = if (isDisabled) MaterialTheme.extendedColors.disabled else MaterialTheme.extendedColors.brand,
-                            style = MaterialTheme.typography.titleMedium.copy(
-                                fontSize = 16.sp,
-                                fontWeight = FontWeight.Normal
-                            )
-                        )*/
-
-                        /*QuantitySelector(isDisabled = isDisabled)*/
-                    }
-
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceBetween,
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        if (stock == "0") {
-                            AssistChip(
-                                onClick = {},
-                                label = { Text("Sin stock", style = MaterialTheme.typography.bodySmall) },
-                                shape = CircleShape,
-                                border = null,
-                                modifier = Modifier.height(22.dp),
-                                colors = AssistChipDefaults.assistChipColors(
-                                    containerColor = MaterialTheme.colorScheme.error.copy(alpha = 0.12f),
-                                    labelColor = MaterialTheme.colorScheme.error
-                                )
-                            )
-                        } else {
+                    // 👇 Ahora el chip queda directamente debajo del precio
+                    Text(
+                        when (estado) {
+                            EstadoProducto.DISPONIBLE -> "Disponible"
+                            EstadoProducto.BAJO_STOCK -> "Bajo stock"
+                            EstadoProducto.SIN_MOVIMIENTO -> "Sin movimiento"
+                            EstadoProducto.NUEVO_INGRESO -> "Nuevo ingreso"
+                        },
+                        color = MaterialTheme.extendedColors.medium,
+                        style = MaterialTheme.typography.bodySmall
+                    )
+                    /*AssistChip(
+                        onClick = {},
+                        label = {
                             Text(
-                                text = stock,
-                                style = MaterialTheme.typography.bodySmall,
-                                color = MaterialTheme.extendedColors.medium
+                                when (estado) {
+                                    EstadoProducto.DISPONIBLE -> "Disponible"
+                                    EstadoProducto.BAJO_STOCK -> "Bajo stock"
+                                    EstadoProducto.SIN_MOVIMIENTO -> "Sin movimiento"
+                                    EstadoProducto.NUEVO_INGRESO -> "Nuevo ingreso"
+                                },
+                                style = MaterialTheme.typography.bodySmall
                             )
-                        }
+                        },
+                        shape = CircleShape,
+                        modifier = Modifier.height(22.dp),
+                        border = null,
+                        colors = AssistChipDefaults.assistChipColors(
+                            containerColor = estadoColor.copy(alpha = 0.15f),
+                            labelColor = estadoColor
+                        )
+                    )*/
+
+                    /*Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
                     }
+
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        AssistChip(
+                            onClick = {},
+                            label = { Text(
+                                when (estado) {
+                                    EstadoProducto.DISPONIBLE -> "Disponible"
+                                    EstadoProducto.BAJO_STOCK -> "Bajo stock"
+                                    EstadoProducto.SIN_MOVIMIENTO -> "Sin movimiento"
+                                    EstadoProducto.NUEVO_INGRESO -> "Nuevo ingreso"
+                                },
+                                style = MaterialTheme.typography.bodySmall
+                            ) },
+                            shape = CircleShape,
+                            modifier = Modifier.height(22.dp),
+                            border = null,
+                            colors = AssistChipDefaults.assistChipColors(
+                                containerColor = estadoColor.copy(alpha = 0.15f),
+                                labelColor = estadoColor
+                            )
+                        )
+                    }*/
                 }
             }
         }

@@ -15,9 +15,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.ReadOnlyComposable
 
-private val LightColorScheme = lightColorScheme(
-    primary = CustomDark,
-    onPrimary = CustomWhite,
+/*private val LightColorScheme = lightColorScheme(
+    primary = BrightIndigo,
+    onPrimary = White,
 
     primaryContainer = CustomDark,
     onPrimaryContainer = CustomWhite,
@@ -43,8 +43,8 @@ private val LightColorScheme = lightColorScheme(
 )
 
 private val DarkColorScheme = darkColorScheme(
-    primary = CustomWhite,
-    onPrimary = CustomWhite,
+    primary = BrightIndigo,
+    onPrimary = White,
 
     primaryContainer = CustomWhite,
     onPrimaryContainer = CustomDark,
@@ -66,11 +66,87 @@ private val DarkColorScheme = darkColorScheme(
 
     error = ErrorDark,
     onError = White
+)*/
+
+private val LightColorScheme = lightColorScheme(
+    primary = BrightIndigo,
+    onPrimary = CustomWhite,
+
+    // Mejor contraste y consistencia Material 3
+    primaryContainer = BrightIndigo.copy(alpha = 0.15f),
+    onPrimaryContainer = BrightIndigo,
+
+    secondary = LowBlue,
+    onSecondary = CustomWhite,
+    secondaryContainer = LowBlue.copy(alpha = 0.15f),
+    onSecondaryContainer = LowBlue,
+
+    tertiary = PinkAccent,
+    onTertiary = CustomWhite,
+    tertiaryContainer = PinkAccent.copy(alpha = 0.15f),
+    onTertiaryContainer = PinkAccent,
+
+    background = LightBackground,
+    onBackground = OnLightText,
+
+    surface = LightSurface,
+    onSurface = OnLightText,
+
+    // ✅ Faltaban
+    surfaceVariant = LightSurfaceVariant,
+    onSurfaceVariant = OnLightSurfaceVariant,
+
+    inverseSurface = InverseSurface,
+    inverseOnSurface = InverseOnSurface,
+    inversePrimary = InversePrimary,
+
+    outline = LightOutline,
+    outlineVariant = LightOutlineVariant,
+
+    error = ErrorLight,
+    onError = CustomWhite
+)
+
+private val DarkColorScheme = darkColorScheme(
+    primary = BrightIndigo,
+    onPrimary = CustomWhite,
+
+    primaryContainer = BrightIndigo.copy(alpha = 0.25f),
+    onPrimaryContainer = CustomWhite,
+
+    secondary = LowBlue,
+    onSecondary = CustomWhite,
+    secondaryContainer = LowBlue.copy(alpha = 0.25f),
+    onSecondaryContainer = CustomWhite,
+
+    tertiary = PinkAccent,
+    onTertiary = CustomWhite,
+    tertiaryContainer = PinkAccent.copy(alpha = 0.25f),
+    onTertiaryContainer = CustomWhite,
+
+    background = DarkBackground,
+    onBackground = OnDarkText,
+
+    surface = DarkSurface,
+    onSurface = OnDarkText,
+
+    // ✅ Faltaban
+    surfaceVariant = DarkSurfaceVariant,
+    onSurfaceVariant = OnDarkSurfaceVariant,
+
+    inverseSurface = InverseSurface,
+    inverseOnSurface = InverseOnSurface,
+    inversePrimary = InversePrimary,
+
+    outline = DarkOutline,
+    outlineVariant = DarkOutlineVariant,
+
+    error = ErrorDark,
+    onError = CustomWhite
 )
 
 @Immutable
 data class ExtendedColors(
-    val brand: Color,
     val success: Color,
     val warning: Color,
     val medium: Color,
@@ -78,7 +154,6 @@ data class ExtendedColors(
 )
 
 val LightExtendedColors = ExtendedColors(
-    brand = BlueSky,
     success = SuccessLight,
     warning = WarningLight,
     medium = OnLightTextMedium,
@@ -86,7 +161,6 @@ val LightExtendedColors = ExtendedColors(
 )
 
 val DarkExtendedColors = ExtendedColors(
-    brand = BlueSky,
     success = SuccessDark,
     warning = WarningDark,
     medium = OnDarkTextMedium,

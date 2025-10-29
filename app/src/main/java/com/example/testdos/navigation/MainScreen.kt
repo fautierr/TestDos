@@ -20,23 +20,16 @@ fun MainScreen() {
     var search by remember { mutableStateOf("") }
     Scaffold(
         // ... otros parámetros del Scaffold ...
-        topBar = {
-            /*CustomTopBar(
-                title = "Transacciones",
-                showBackButton = false,
-                onBack = { *//* navigate back *//* },
-                onSearchClick = { *//* acción buscar *//* },
-                onNotificationsClick = { *//* acción notificaciones *//* }
-            )*/
+        /*topBar = {
 
             CustomTopBar(
                 searchQuery = search,
                 onSearchQueryChange = { search = it },
                 showBackButton = true,
-                onBack = { /* acción back */ },
-                onNotificationsClick = { /* acción notificaciones */ }
+                onBack = { *//* acción back *//* },
+                onNotificationsClick = { *//* acción notificaciones *//* }
             )
-        },
+        },*/
        /* bottomBar = {
             if (shouldShowBottomBar) {
                 BottomNavigationBar(navController = navController)

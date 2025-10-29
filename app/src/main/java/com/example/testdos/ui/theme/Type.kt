@@ -179,3 +179,47 @@ val Typography = Typography(
         fontSize = 14.sp
     )
 )*/
+
+/*val OpenSans = FontFamily(
+    Font(R.font.open_sans_light, FontWeight.Light),        // 300
+    Font(R.font.open_sans_regular, FontWeight.Normal),     // 400
+    Font(R.font.open_sans_medium, FontWeight.Medium),      // 500
+    Font(R.font.open_sans_semi_bold, FontWeight.SemiBold), // 600
+    Font(R.font.open_sans_bold, FontWeight.Bold)           // 700
+)
+
+// Set of Material typography styles
+val Typography = Typography(
+    bodyLarge = TextStyle(
+        fontFamily = OpenSans,
+        fontWeight = FontWeight.Normal,
+        fontSize = 16.sp,
+        lineHeight = 24.sp
+    ),
+    titleLarge = TextStyle(
+        fontFamily = OpenSans,
+        fontWeight = FontWeight.Bold,
+        fontSize = 22.sp
+    ),
+    titleMedium = TextStyle(
+        fontFamily = OpenSans,
+        fontWeight = FontWeight.Medium,
+        fontSize = 18.sp
+    ),
+    labelLarge = TextStyle(
+        fontFamily = OpenSans,
+        fontWeight = FontWeight.SemiBold,
+        fontSize = 14.sp
+    ),
+    bodyMedium = TextStyle(
+        fontFamily = OpenSans,
+        fontWeight = FontWeight.Normal,
+        fontSize = 14.sp,
+        lineHeight = 20.sp
+    ),
+    labelMedium = TextStyle(
+        fontFamily = OpenSans,
+        fontWeight = FontWeight.Medium,
+        fontSize = 12.sp
+    )
+)*/
